@@ -1,0 +1,10 @@
+#!/bin/bash
+echo "removing semi-tether..."
+rm /.jbd/launchctl
+rm /.jbd/LaunchDaemons/com.apple.backboardd.plist
+rm /.jbd/LaunchDaemons/com.apple.SpringBoard.plist
+rm /.jbd/launchd
+rm /.jbd/Caches/xpcd_cache.dylib
+echo "done!"
+
+exit 0

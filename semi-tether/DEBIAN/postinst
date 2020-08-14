@@ -1,0 +1,17 @@
+#!/bin/bash
+
+echo "Applying package..."
+
+/.jbd/patch/make_caches /System/Library/Caches/com.apple.xpcd/xpcd_cache.dylib /.jbd/Caches/xpcd_cache.dylib_0
+bspatch /.jbd/Caches/xpcd_cache.dylib_0 /.jbd/Caches/xpcd_cache.dylib /.jbd/patch/xpcd_cache.patch
+cp /sbin/launchd /.jbd/launchd_0
+bspatch /.jbd/launchd_0 /.jbd/launchd /.jbd/patch/launchd.patch
+cp /bin/launchctl /.jbd/launchctl
+cp /System/Library/LaunchDaemons/com.apple.backboardd.plist /.jbd/LaunchDaemons/com.apple.backboardd.plist
+cp /System/Library/LaunchDaemons/com.apple.SpringBoard.plist /.jbd/LaunchDaemons/com.apple.SpringBoard.plist
+chmod 755 /.jbd/launchd
+chmod 755 /.jbd/Caches/xpcd_cache.dylib
+rm /.jbd/launchd_0
+rm /.jbd/Caches/xpcd_cache.dylib_0
+
+exit 0
